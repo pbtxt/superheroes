@@ -21,16 +21,16 @@ export default class SuperHeroe extends Component<Props, State> {
   render() {
     const { superheroe } = this.props;
     return (
-      <div>
+      <div className="superheroe-container">
         {superheroe && (
-          <div>
-            <h1>{superheroe.name}</h1>
+          <div className="superheroe-card">
             {superheroe && superheroe.image && (
               <img
                 src={superheroe.image.url}
                 alt={`${superheroe.name}-imagen`}
               />
             )}
+            <h1>{superheroe.name}</h1>
           </div>
         )}
       </div>

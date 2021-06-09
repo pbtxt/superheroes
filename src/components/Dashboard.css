@@ -1,4 +1,5 @@
 .dashboard-superheroes-container {
   display: grid;
-  grid-template-columns: 40% 40%;
+  grid-template-columns: 50% 50%;
+  padding: 40px;
 }
