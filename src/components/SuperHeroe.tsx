@@ -1,11 +1,8 @@
 import React, { Component } from "react";
+import { SuperHeroeType } from "./Types";
 
 export type Props = {
-  superheroe?: {
-    name: string;
-    id: string;
-    image: { url: string };
-  };
+  superheroe?: SuperHeroeType;
 };
 
 type State = {};
