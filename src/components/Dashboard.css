@@ -29,6 +29,7 @@
   margin-right: 15px;
   text-align: center;
   cursor: pointer;
+  border-color: #c4cace;
 }
 
 .dashboard-letter-button:hover {
@@ -48,4 +49,9 @@
   width: 50vw;
   letter-spacing: 0.7px;
   -webkit-appearance: none;
+}
+
+.dashboard-title {
+  color: #515151;
+  padding: 30px 20px;
 }

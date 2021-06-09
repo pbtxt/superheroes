@@ -1,12 +1,18 @@
 import React, { Component } from "react";
-import { getSuperHeroes, getSuperHeroesName } from "../functions/api";
+import {
+  getSuperHeroes,
+  getSuperHeroesName,
+  getSuperHeroesID,
+} from "../functions/api";
 import SuperHeroe from "./SuperHeroe";
 import { SuperHeroeType } from "./Types";
+
 export interface Props {}
 
 type State = {
   superheroes: SuperHeroeType[];
   value: string;
+  showDetails: boolean;
 };
 
 const letters = [
@@ -44,6 +50,7 @@ export default class Dashboard extends Component<Props, State> {
     this.state = {
       superheroes: [],
       value: "",
+      showDetails: false,
     };
   }
 
@@ -53,6 +60,17 @@ export default class Dashboard extends Component<Props, State> {
       console.log(this.state.superheroes);
     });
   }
+
+  handleDetails = (id: string) => {
+    let result: SuperHeroeType[] = [];
+    getSuperHeroesID(id).then((data) => {
+      result.push(data.data);
+      this.setState({
+        superheroes: result,
+        showDetails: !this.state.showDetails,
+      });
+    });
+  };
 
   handleSearch = (ev: React.ChangeEvent<HTMLInputElement>) => {
     this.setState(
@@ -86,34 +104,43 @@ export default class Dashboard extends Component<Props, State> {
   };
 
   render() {
-    const { superheroes, value } = this.state;
+    const { superheroes, value, showDetails } = this.state;
     return (
       <div className="dashboard-container">
-        <h1>Dashboard SuperHeroes</h1>
-        <input
-          onChange={this.handleSearch}
-          value={value}
-          className="input"
-          type="search"
-          id="search-bar__input"
-          placeholder="Buscar"
-        />
-        <div className="dashboard-letters-container">
-          {letters.map((letter) => {
-            return (
-              <button
-                className="dashboard-letter-button"
-                onClick={() => this.searchByLetter(letter)}
-              >
-                {letter}
-              </button>
-            );
-          })}
-        </div>
+        <h1 className="dashboard-title">SuperHeroes</h1>
+        {!showDetails && (
+          <input
+            onChange={this.handleSearch}
+            value={value}
+            className="input"
+            type="search"
+            id="search-bar__input"
+            placeholder="Buscar"
+          />
+        )}
+        {!showDetails && (
+          <div className="dashboard-letters-container">
+            {letters.map((letter) => {
+              return (
+                <button
+                  className="dashboard-letter-button"
+                  onClick={() => this.searchByLetter(letter)}
+                >
+                  {letter}
+                </button>
+              );
+            })}
+          </div>
+        )}
         <div className="dashboard-superheroes-container">
           {superheroes &&
-            superheroes.map((superHeroe, superKey) => {
-              return <SuperHeroe superheroe={superHeroe} />;
+            superheroes.map((superHeroe) => {
+              return (
+                <SuperHeroe
+                  superheroe={superHeroe}
+                  handleDetails={() => this.handleDetails(superHeroe.id)}
+                />
+              );
             })}
         </div>
       </div>
