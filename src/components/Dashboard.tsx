@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { getSuperHeroes, getSuperHeroesName } from "../functions/api";
 import SuperHeroe from "./SuperHeroe";
+import { SuperHeroeType } from "./Types";
 export interface Props {}
 
 type State = {
-  // superheroes: [id: string, name: string, image: { url: string }];
+  superheroes: SuperHeroeType[];
   value: string;
-  superheroes: any[];
 };
 
 const letters = [
@@ -42,7 +42,7 @@ export default class Dashboard extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      superheroes: ["", "", { url: "" }],
+      superheroes: [],
       value: "",
     };
   }
@@ -50,6 +50,7 @@ export default class Dashboard extends Component<Props, State> {
   componentDidMount() {
     getSuperHeroes().then((data) => {
       this.setState({ superheroes: data.data.results });
+      console.log(this.state.superheroes);
     });
   }
 
@@ -73,9 +74,9 @@ export default class Dashboard extends Component<Props, State> {
   };
 
   searchByLetter = (letter: string) => {
-    let supers: { name: string }[] = [];
+    let supers: SuperHeroeType[] = [];
     getSuperHeroesName(letter).then((data) => {
-      data.data.results.map((x: { name: string }) => {
+      data.data.results.map((x: SuperHeroeType) => {
         if (x.name.charAt(0) == letter) {
           supers.push(x);
         }
@@ -97,10 +98,13 @@ export default class Dashboard extends Component<Props, State> {
           id="search-bar__input"
           placeholder="Buscar"
         />
-        <div>
+        <div className="dashboard-letters-container">
           {letters.map((letter) => {
             return (
-              <button onClick={() => this.searchByLetter(letter)}>
+              <button
+                className="dashboard-letter-button"
+                onClick={() => this.searchByLetter(letter)}
+              >
                 {letter}
               </button>
             );
