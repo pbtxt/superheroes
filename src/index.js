@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "./components/Dashboard.css";
 import "./components/SuperHeroe.css";
-import App from "./components/App";
+import "./components/Common/LoadingCircle.css";
+import "./components/Filter.css";
 import Dashboard from "./components/Dashboard";
 
 ReactDOM.render(
