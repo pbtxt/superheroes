@@ -4,35 +4,45 @@ export type SuperHeroeType = {
   image?: {
     url: string;
   };
-  appearance?: {
-    gender?: string;
-    race?: string;
-    height?: string[];
-    weight?: string[];
-    "eye-color"?: string;
-  };
-  biography?: {
-    "full-name"?: string;
-    "alter-egos"?: string;
-    aliases?: string[];
-    "place-of-birth"?: string;
-    "first-appearance"?: string;
-    alignment?: string;
-  };
-  work?: {
-    occupation: string;
-    base: string;
-  };
-  powerstats?: {
-    intelligence: string;
-    strength: string;
-    speed: string;
-    durability: string;
-    power: string;
-    combat: string;
-  };
-  connections?: {
-    "group-affiliation": string;
-    relatives: string;
-  };
+  appearance?: Appearance;
+  biography?: Biography;
+  work?: Work;
+  powerstats?: Powerstats;
+  connections?: Connections;
+};
+
+export type Appearance = {
+  gender?: string;
+  race?: string;
+  height?: string[];
+  weight?: string[];
+  "eye-color"?: string;
+};
+
+export type Powerstats = {
+  intelligence: string;
+  strength: string;
+  speed: string;
+  durability: string;
+  power: string;
+  combat: string;
+};
+
+export type Biography = {
+  "full-name"?: string;
+  "alter-egos"?: string;
+  aliases?: string[];
+  "place-of-birth"?: string;
+  "first-appearance"?: string;
+  alignment?: string;
+};
+
+export type Work = {
+  occupation: string;
+  base: string;
+};
+
+export type Connections = {
+  "group-affiliation": string;
+  relatives: string;
 };
