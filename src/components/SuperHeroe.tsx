@@ -25,7 +25,6 @@ export default class SuperHeroe extends Component<Props, State> {
   render() {
     const { superheroe } = this.props;
     const { loading } = this.state;
-    console.log(superheroe);
     return (
       <div className="superheroe-container">
         {loading && <LoadingCircle />}
