@@ -4,7 +4,6 @@ import "./index.css";
 import "./components/Dashboard.css";
 import "./components/SuperHeroe.css";
 import "./components/Common/LoadingCircle.css";
-import App from "./components/App";
 import Dashboard from "./components/Dashboard";
 
 ReactDOM.render(
