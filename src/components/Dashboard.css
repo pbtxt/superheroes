@@ -55,3 +55,14 @@
   color: #515151;
   padding: 30px 20px;
 }
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-superheroes-details {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
