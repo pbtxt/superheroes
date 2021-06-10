@@ -61,3 +61,25 @@
   align-items: center;
   justify-content: center;
 }
+
+@media screen and (max-width: 768px) {
+  .dashboard-letters-container {
+    height: 150px;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 20px 0px;
+  }
+
+  .dashboard-superheroes-container {
+    grid-template-columns: 100%;
+  }
+
+  .dashboard-letter-button {
+    margin: 4px;
+  }
+
+  .dashboard-container input {
+    width: 90%;
+  }
+}
