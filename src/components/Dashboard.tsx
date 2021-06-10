@@ -7,7 +7,6 @@ import {
 import SuperHeroe from "./SuperHeroe";
 import { SuperHeroeType } from "./Types";
 import LoadingCircle from "./Common/LoadingCircle";
-import Filter from "./Filter";
 
 export interface Props {}
 
@@ -184,10 +183,7 @@ export default class Dashboard extends Component<Props, State> {
                       </div>
                     </div>
                   ) : (
-                    <div className="dashboard-superheroes-details">
-                      <Filter />
-                      <SuperHeroe superheroe={superheroe}></SuperHeroe>
-                    </div>
+                    <SuperHeroe superheroe={superheroe}></SuperHeroe>
                   )}
                 </div>
               );

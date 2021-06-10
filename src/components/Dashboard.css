@@ -61,8 +61,3 @@
   align-items: center;
   justify-content: center;
 }
-
-.dashboard-superheroes-details {
-  display: grid;
-  grid-template-columns: 30% 70%;
-}

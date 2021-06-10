@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Powerstats, Appearance } from "./Types";
+import { FilterType } from "./Types";
 
-export interface Props {}
+export interface Props {
+  onChange: (category: string, subcategorie: string) => void;
+}
 
 interface State {}
 
-const filterTypes = ["poderes", "apariencia"];
-const filterSubcategories = {
+const filterSubcategories: FilterType = {
   poderes: [
     "intelligence",
     "strength",
@@ -17,13 +18,17 @@ const filterSubcategories = {
   ],
   apariencia: ["gender", "race", "height", "weight", "eye-color"],
 };
+
 export default class Filter extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {};
   }
 
-  handleSearch = (ev: React.ChangeEvent<HTMLInputElement>) => {};
+  handleSelector = (category: string, subcategorie: string) => {
+    this.props.onChange(category, subcategorie);
+  };
+
   render() {
     return (
       <div className="filter-container">
@@ -39,7 +44,16 @@ export default class Filter extends Component<Props, State> {
                   {Object.values(filterSubcategories)[filterIndex].map(
                     (filterCategory, filterCategoryIndex) => {
                       return (
-                        <li key={filterCategory} className="filter-category">
+                        <li
+                          key={filterCategoryIndex}
+                          className="filter-category"
+                          onClick={() =>
+                            this.handleSelector(
+                              Object.keys(filterSubcategories)[filterIndex],
+                              filterCategory
+                            )
+                          }
+                        >
                           {filterCategory}
                         </li>
                       );

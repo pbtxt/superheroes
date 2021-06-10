@@ -67,3 +67,16 @@
   margin: 0px;
   color: #515151;
 }
+
+.superheroes-details {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.filter-container {
+  padding: 20px;
+}
+
+.superheroe-big-card-info h4 {
+  cursor: pointer;
+}

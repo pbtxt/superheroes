@@ -46,3 +46,8 @@ export type Connections = {
   "group-affiliation": string;
   relatives: string;
 };
+
+export type FilterType = {
+  poderes: string[];
+  apariencia: string[];
+};
