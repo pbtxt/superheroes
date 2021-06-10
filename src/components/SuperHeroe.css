@@ -49,3 +49,21 @@
 .superheroe-info-container p {
   font-size: 14px;
 }
+
+.superheroe-big-card {
+  display: flex;
+  justify-content: center;
+}
+
+.superheroe-big-card img {
+  width: 50%;
+}
+
+.superheroe-big-card-info {
+  margin: 0px 30px;
+}
+
+.superheroe-big-card-info h1 {
+  margin: 0px;
+  color: #515151;
+}
